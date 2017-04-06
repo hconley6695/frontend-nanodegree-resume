@@ -2,120 +2,114 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
-var funThoughts = "Hi, my name is " + "Heather, " + "I am fun.";
-console.log(funThoughts);
+// var funThoughts = "Hi, my name is " + "Heather, " + "I am fun.";
+// console.log(funThoughts);
 
- var awesomeThoughts = funThoughts.replace('fun', 'awesome');
- console.log(awesomeThoughts);
+//  var awesomeThoughts = funThoughts.replace('fun', 'awesome');
+//  console.log(awesomeThoughts);
 
- // $('#main').append(awesomeThoughts);
+//  // $('#main').append(awesomeThoughts);
 
-var name = "Heather Conley";
- var formattedName =  HTMLheaderName.replace('%data%', name);
+// var name = "Heather Conley";
+//  // var formattedName =  HTMLheaderName.replace('%data%', name);
 
-var role = "Junior Front End Developer";
-var formattedRole = HTMLheaderRole.replace('%data%', role);
+// var role = "Junior Front End Developer";
+// var formattedRole = HTMLheaderRole.replace('%data%', role);
 
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
+// $('#header').prepend(formattedRole);
+// $('#header').prepend(formattedName);
 
-var skills = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS'];
+var skills = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'];
 
 var bio = {
     'name': 'Heather Conley',
     'role': 'Junior Front End Developer',
-    'contact_information': {
+    'contacts': {
         'email': 'hconley6695@gmail.com',
-        'mobile': '678-697-3248'
+        'mobile': '678-697-3248',
+        'github': 'https://github.com/hconley6695',
+        'twitter': '@hconley6695',
+        'location': 'Atlanta, GA'
         },
-    'pictureURL': 'http://placehold.it/350x350',
-    'welcomeMsg': 'Hello, welcome to my page!',
-    'skills': skills
+    // 'pictureURL': 'http://placehold.it/350x350',
+    'welcomeMessage': 'Hello, welcome to my page!',
+    'skills': skills,
+    // 'biopic': stringURL, 
+    'display': function display() {
+        console.log("hi");
+    }
+}
+
+var work = {
+    'jobs' : [
+        {
+            'employer': 'GetUWired',
+            'title': 'CrossFit Developer',
+            'location': 'Gainesville, GA',
+            'dates': 'January 2017 - present',
+            'description': 'Worked on websites specifically for CrossFit gyms, individually stylizing sites to specific needs, changing name servers, etc.'
+        }, 
+        {
+            'employer': 'The Weather Company',
+            'title': 'Junior Developer/Internship',
+            'location': 'Marietta, GA',
+            'dates': 'June 2016 - August 2016',
+            // 'description': 'Worked on project to expand weather.com from 40 locales to over 220 worldwide.'
+        }, 
+        {
+            'employer': 'Atlanta Ballet',
+            'title': 'Centre Principal',
+            'location': 'Marietta, GA',
+            'dates': 'August 2007 - February 2016',
+            // 'description': 'Managed a dance studio with enrollment of 200+ annually; Designed and implemented programs for children and adults; Organized and produced a spring performance for over 1200 children annually'
+        }, 
+    ]
+}
+
+var education = {
+    'schools' : [
+        {
+            'name': 'The Iron Yard',
+            'location': 'Atlanta, GA',
+            'degree': 'Front End Engineering Certificate',
+            'majors': 'HTML, CSS, JavaScript',
+            'dates': 'February 2016 - May 2016',
+            'url': 'http://www.butler.edu'
+        },
+        {
+            'name': 'Butler University',
+            'location': 'Indianapolis, IN',
+            'degree': 'BA in Dance',
+            'majors': 'Dance, Pedagogy concentration',
+            'dates': '2000',
+            'url': 'http://theironyard.com'
+        }
+    ]
+}
+
+var projects = {
+    projects: [
+        {
+            'title': 'Milk Ninja',
+            'dates': 'April 2016 - May 2016',
+            'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.',
+            'images': 'coming soon'
+        },
+        {
+            'title': 'Animal Action',
+            'dates': 'April 2016',
+            'description': 'A preschool game filled with animals and multiple-choice answers',
+            'images': 'coming soon'
+        }
+    ],
+    'display': function display() {
+        console.log("hello");
+    }
 }
 
 
-$('#main').append(bio.name);
-$('#main').append(bio.role);
-$('#main').append(bio.contact_information);
-$('#main').append(bio.pictureURL);
-$('#main').append(bio.welcomeMsg);
-$('#main').append(bio.skills);
 
 
-
-
-
-
-
-
-
-
-/////////////////////////////
-var s = "audacity";
-
-var udacityizer = function(s) {  
-    // Right now, the variable s === "audacity"
-    // Manipulate s to make it equal to "Udacity"
-    // Your code goes here!
-    var letter = s[1].toUpperCase();
-    console.log(letter);  
-
-    var string = s.slice(2, s.length);
-    console.log(string);
-
-    var newStr = letter + string;
-    console.log(newStr);
-};
-
-udacityizer(s);
-
-/////////////////////
-var sampleArray = [0,0,7];
-
-var incrementLastArrayElement = function(_array) {
-    var newArray = [];
-
-    var last = _array[_array.length - 1];
-    var increaseLast = last + 1;
-    _array.pop();
-    _array.push(increaseLast);
-    newArray = _array;
-
-    return newArray;
-
-};
-
-console.log(incrementLastArrayElement(sampleArray));
-
-
-// //////////////////
-
-var name = "AlbERt EINstEiN";
-
-function nameChanger(oldName) {
-    var finalName = oldName;
-
-    var array = finalName.split(" ");
-    var firstName = array[0];
-    var changeToLow = firstName.toLowerCase();
-    var separate = changeToLow.split('');
-    var upperFirstLetter = separate[0].toUpperCase();
-    separate.shift();
-    separate.unshift(upperFirstLetter);
-    firstName = separate.join('');
-
-    var lastName = array[1];
-    lastName = lastName.toUpperCase();
-
-    finalName = firstName + " " + lastName;
-
-    
-
-    return finalName;
-};
-
-// Did your code work? The line below will tell you!
-console.log(nameChanger(name));
 
 
 
