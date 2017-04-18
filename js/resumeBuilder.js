@@ -23,7 +23,7 @@ var bio = {
         'twitter': '@hconley6695',
         'location': 'Atlanta, GA'
         },
-    // 'pictureURL': 'http://placehold.it/350x350',
+    'pictureURL': 'http://placehold.it/350x350',
     'welcomeMessage': 'Hello, welcome to my page!',
     'skills': skills,
     // 'biopic': stringURL, 
@@ -49,7 +49,9 @@ $('#header').prepend(formattedName);
     $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
     $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
     $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-    $
+    $("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+    $(".welcome-message").apppend(HTMLbioPic.replace("%data%", bio.pictureURL));
+
 // });
 
 
