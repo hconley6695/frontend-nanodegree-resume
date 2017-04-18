@@ -10,14 +10,6 @@ This is empty on purpose! Your code to build the resume will go here.
 
 //  // $('#main').append(awesomeThoughts);
 
-// var name = "Heather Conley";
-//  // var formattedName =  HTMLheaderName.replace('%data%', name);
-
-// var role = "Junior Front End Developer";
-// var formattedRole = HTMLheaderRole.replace('%data%', role);
-
-// $('#header').prepend(formattedRole);
-// $('#header').prepend(formattedName);
 
 var skills = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'];
 
@@ -39,6 +31,27 @@ var bio = {
         console.log("hi");
     }
 }
+
+// var name = "Heather Conley";
+var formattedName =  HTMLheaderName.replace("%data%", bio.name);
+
+// var role = "Junior Front End Developer";
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$('#header').prepend(formattedRole);
+$('#header').prepend(formattedName);
+
+// BIO IS AN OBJECT, NOT AN ARRAY
+// bio.forEach(function (bio) {
+
+    $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+    $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+    $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+    $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+    $
+// });
+
 
 var work = {
     'jobs' : [
@@ -94,6 +107,7 @@ var education = {
            'school': 'Udacity',
            'dates': 'December 2016-present',
            'url': 'https://www.udacity.com'
+       }
     ],
     'display': function displaySchools() {
         console.log('hello');
@@ -120,7 +134,15 @@ var projects = {
     }
 }
 
+// var name = "Heather Conley";
+var formattedName =  HTMLheaderName.replace("%data%", bio.name);
 
+// var role = "Junior Front End Developer";
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$('#header').prepend(formattedRole);
+$('#header').prepend(formattedName);
+// 
 
 
 
