@@ -35,7 +35,7 @@ var bio = {
     'welcomeMessage': 'Hello, welcome to my page!',
     'skills': skills,
     // 'biopic': stringURL, 
-    'display': function display() {
+    'display': function displayBio() {
         console.log("hi");
     }
 }
@@ -63,7 +63,10 @@ var work = {
             'dates': 'August 2007 - February 2016',
             // 'description': 'Managed a dance studio with enrollment of 200+ annually; Designed and implemented programs for children and adults; Organized and produced a spring performance for over 1200 children annually'
         }, 
-    ]
+    ],
+    'display': function displayWork() {
+        console.log('display work');
+    }
 }
 
 var education = {
@@ -84,7 +87,17 @@ var education = {
             'dates': '2000',
             'url': 'http://theironyard.com'
         }
-    ]
+    ],
+    'onlineCourses' : [
+        {
+           'title': 'Front-End Web Developer Nanodegree',
+           'school': 'Udacity',
+           'dates': 'December 2016-present',
+           'url': 'https://www.udacity.com'
+    ],
+    'display': function displaySchools() {
+        console.log('hello');
+    }
 }
 
 var projects = {
@@ -102,7 +115,7 @@ var projects = {
             'images': 'coming soon'
         }
     ],
-    'display': function display() {
+    'display': function displayProjects() {
         console.log("hello");
     }
 }
