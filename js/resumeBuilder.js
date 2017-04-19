@@ -23,7 +23,7 @@ var bio = {
         'twitter': '@hconley6695',
         'location': 'Atlanta, GA'
         },
-    'pictureURL': 'http://placehold.it/350x350',
+    'pictureURL': 'images/profile.jpg',
     'welcomeMessage': 'Hello, welcome to my page!',
     'skills': skills,
     // 'biopic': stringURL, 
@@ -32,27 +32,24 @@ var bio = {
     }
 }
 
-// var name = "Heather Conley";
 var formattedName =  HTMLheaderName.replace("%data%", bio.name);
-
-// var role = "Junior Front End Developer";
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+$("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+$(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+$(".welcome-message").append(HTMLskillsStart);
+skills.forEach(function(skill) {
+    $("#skills-h3").append(HTMLskills.replace("%data%", skill));
+})
 
-// BIO IS AN OBJECT, NOT AN ARRAY
-// bio.forEach(function (bio) {
 
-    $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-    $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-    $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-    $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-    $("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-    $(".welcome-message").apppend(HTMLbioPic.replace("%data%", bio.pictureURL));
-
-// });
 
 
 var work = {
@@ -85,7 +82,7 @@ var work = {
 }
 
 var education = {
-    'schools' : [
+    schools : [
         {
             'name': 'The Iron Yard',
             'location': 'Atlanta, GA',
@@ -103,7 +100,7 @@ var education = {
             'url': 'http://theironyard.com'
         }
     ],
-    'onlineCourses' : [
+    onlineCourses : [
         {
            'title': 'Front-End Web Developer Nanodegree',
            'school': 'Udacity',
@@ -115,6 +112,8 @@ var education = {
         console.log('hello');
     }
 }
+$("#workExperience").append(HTMLworkTitle.replace("%data%", work.jobs[0]['title']));
+$("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
 
 var projects = {
     projects: [
@@ -136,15 +135,7 @@ var projects = {
     }
 }
 
-// var name = "Heather Conley";
-var formattedName =  HTMLheaderName.replace("%data%", bio.name);
 
-// var role = "Junior Front End Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
-// 
 
 
 
