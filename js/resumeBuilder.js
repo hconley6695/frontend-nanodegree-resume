@@ -2,14 +2,6 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
-// var funThoughts = "Hi, my name is " + "Heather, " + "I am fun.";
-// console.log(funThoughts);
-
-//  var awesomeThoughts = funThoughts.replace('fun', 'awesome');
-//  console.log(awesomeThoughts);
-
-//  // $('#main').append(awesomeThoughts);
-
 
 var skills = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'];
 
@@ -32,24 +24,6 @@ var bio = {
     }
 }
 
-var formattedName =  HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-$("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-$(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
-$(".welcome-message").append(HTMLskillsStart);
-skills.forEach(function(skill) {
-    $("#skills-h3").append(HTMLskills.replace("%data%", skill));
-})
-
-
 
 
 var work = {
@@ -59,21 +33,21 @@ var work = {
             'title': 'CrossFit Developer',
             'location': 'Gainesville, GA',
             'dates': 'January 2017 - present',
-            'description': 'Worked on websites specifically for CrossFit gyms, individually stylizing sites to specific needs, changing name servers, etc.'
+            'description': 'Worked on websites specifically for CrossFit gyms, individually stylizing sites to specific needs, changing name servers to push sites live. '
         }, 
         {
             'employer': 'The Weather Company',
             'title': 'Junior Developer/Internship',
             'location': 'Marietta, GA',
             'dates': 'June 2016 - August 2016',
-            // 'description': 'Worked on project to expand weather.com from 40 locales to over 220 worldwide.'
+            'description': 'Worked on project to expand weather.com from 40 locales to over 220 worldwide.'
         }, 
         {
             'employer': 'Atlanta Ballet',
             'title': 'Centre Principal',
             'location': 'Marietta, GA',
             'dates': 'August 2007 - February 2016',
-            // 'description': 'Managed a dance studio with enrollment of 200+ annually; Designed and implemented programs for children and adults; Organized and produced a spring performance for over 1200 children annually'
+            'description': 'Managed a dance studio with enrollment of 200+ annually; Designed and implemented programs for children and adults; Organized and produced a spring performance for over 1200 children annually.'
         }, 
     ],
     'display': function displayWork() {
@@ -82,12 +56,12 @@ var work = {
 }
 
 var education = {
-    schools : [
+    'schools' : [
         {
             'name': 'The Iron Yard',
             'location': 'Atlanta, GA',
             'degree': 'Front End Engineering Certificate',
-            'majors': 'HTML, CSS, JavaScript',
+            'majors': ['HTML', 'CSS', 'JavaScript'],
             'dates': 'February 2016 - May 2016',
             'url': 'http://www.butler.edu'
         },
@@ -100,7 +74,7 @@ var education = {
             'url': 'http://theironyard.com'
         }
     ],
-    onlineCourses : [
+    'onlineCourses' : [
         {
            'title': 'Front-End Web Developer Nanodegree',
            'school': 'Udacity',
@@ -112,11 +86,10 @@ var education = {
         console.log('hello');
     }
 }
-$("#workExperience").append(HTMLworkTitle.replace("%data%", work.jobs[0]['title']));
-$("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
+
 
 var projects = {
-    projects: [
+    'projects': [
         {
             'title': 'Milk Ninja',
             'dates': 'April 2016 - May 2016',
@@ -136,10 +109,64 @@ var projects = {
 }
 
 
+var formattedName =  HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$('#header').prepend(formattedRole);
+$('#header').prepend(formattedName);
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+$("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+$(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+// $(".welcome-message").append(HTMLskillsStart);
+// skills.forEach(function(skill) {
+//     $("#skills-h3").append(HTMLskills.replace("%data%", skill));
+// })
+
+// $("#workExperience").append(HTMLworkTitle.replace("%data%", work.jobs[0]['title']));
+$("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
 
 
+if (skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
+    $("#skills").append(formattedSkill);
 
+}
+// $("#skills").append(skills.forEach(function(skill) {
+//     $("#skills").append(HTMLskills.replace("%data%", skill));
+// }))
 
+var jobs = work.jobs;
+for(job in jobs) {
+    $("#workExperience").append(HTMLworkStart);
 
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + " - " + formattedTitle;
+
+    $(".work-entry:last").append(formattedEmployerTitle);
+
+    var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
+    $(".work-entry:last").append(formattedDates);
+
+    var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
+    $(".work-entry:last").append(formattedDescription);
+}
 
 
