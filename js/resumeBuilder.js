@@ -153,20 +153,60 @@ if (skills.length > 0) {
 // }))
 
 var jobs = work.jobs;
-for(job in jobs) {
-    $("#workExperience").append(HTMLworkStart);
+function displayWork() {
+    for(job in jobs) {
+        $("#workExperience").append(HTMLworkStart);
 
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
-    var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
-    var formattedEmployerTitle = formattedEmployer + " - " + formattedTitle;
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
+        var formattedEmployerTitle = formattedEmployer + " - " + formattedTitle;
 
-    $(".work-entry:last").append(formattedEmployerTitle);
+        $(".work-entry:last").append(formattedEmployerTitle);
 
-    var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
-    $(".work-entry:last").append(formattedDates);
+        var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
+        $(".work-entry:last").append(formattedDates);
 
-    var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
-    $(".work-entry:last").append(formattedDescription);
+        var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
+        $(".work-entry:last").append(formattedDescription);
+    }
 }
+displayWork();
+
+
+$(document).click(function  (loc) {
+
+    var x = loc.pageX;
+    var y = loc.pageY;
+    logClicks(x, y);
+
+
+});
+
+$("#main").append(internationalizeButton);
+
+function inName(name) {
+    var firstArray = name.split(" ");
+    var first = firstArray[0];
+    var last = firstArray[1];
+
+    var x = first.charAt(0).toUpperCase();
+    var y = first.slice(1, (first.length));
+    first = x + y;
+
+
+    last = last.toUpperCase();
+    var fullName = first + " " + last;
+    
+        console.log(fullName);
+        return fullName;
+
+}
+inName("heather conley");
+
+
+
+
+
+
 
 
