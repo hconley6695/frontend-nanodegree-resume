@@ -93,19 +93,31 @@ var projects = {
         {
             'title': 'Milk Ninja',
             'dates': 'April 2016 - May 2016',
-            'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.',
-            'images': 'coming soon'
+            'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.'
+            ,
+            'images': 
+                [{'image': 'images/ninja.jpg'}]
+
         },
         {
             'title': 'Animal Action',
             'dates': 'April 2016',
-            'description': 'A preschool game filled with animals and multiple-choice answers',
-            'images': 'coming soon'
+            'description': 'A preschool game filled with animals and multiple-choice answers'
+            ,
+            'images': [{'image': 'images/game.png'}]
+        },
+        {
+            'title': 'jQuery Slider',
+            'dates': 'February 2017',
+            'description': 'Simple jQuery slider'
+            ,
+            'images': [{'image': 'images/jquery_slider_img.png'}]
         }
-    ],
-    'display': function displayProjects() {
-        console.log("hello");
-    }
+    ]
+    // ,
+    // 'display': function displayProjects() {
+    //     console.log("hello");
+    // }
 }
 
 
@@ -159,7 +171,7 @@ function displayWork() {
 
         var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
-        var formattedEmployerTitle = formattedEmployer + " - " + formattedTitle;
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
         $(".work-entry:last").append(formattedEmployerTitle);
 
@@ -199,11 +211,31 @@ function inName(name) {
     
         console.log(fullName);
         return fullName;
-
 }
 inName("heather conley");
 
+projects.display = function() {
+    for (proj in projects.projects) {
+        $("#projects").append(HTMLprojectStart);
+        
+        var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
+        $(".project-entry:last").append(formattedProjTitle);
+        var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[proj].dates);
+        $(".project-entry:last").append(formattedProjDates);
+        var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
+        $(".project-entry:last").append(formattedProjDescription);
+        
+        if (projects.projects[proj].images.length > 0) {
+            for (image in projects.projects[proj].images) {
+                var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[image]);
+                console.log(formattedProjImage)''
+                $(".project-entry:last").append(formattedProjImage);
 
+            }
+        }
+    }
+}
+projects.display();
 
 
 
