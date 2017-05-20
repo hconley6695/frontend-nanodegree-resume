@@ -13,14 +13,24 @@ var bio = {
         'mobile': '678-697-3248',
         'github': 'https://github.com/hconley6695',
         'twitter': '@hconley6695',
-        'location': 'Atlanta, GA'
+        'location': 'Alpharetta, GA'
         },
     'pictureURL': 'images/profile.jpg',
-    'welcomeMessage': 'Hello, welcome to my page!',
-    'skills': skills,
-    // 'biopic': stringURL, 
+    'welcomeMessage': 'Hello, Welcome to my Page!',
+    'skills': ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'],
     'display': function displayBio() {
-        console.log("hi");
+        var formattedName =  HTMLheaderName.replace("%data%", bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+        $('#header').prepend(formattedRole);
+        $('#header').prepend(formattedName);
+        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+        $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+        $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+        $("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        $(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
     }
 }
 
@@ -33,7 +43,7 @@ var work = {
             'title': 'CrossFit Developer',
             'location': 'Gainesville, GA',
             'dates': 'January 2017 - present',
-            'description': 'Worked on websites specifically for CrossFit gyms, individually stylizing sites to specific needs, changing name servers to push sites live. '
+            'description': 'Contributed to building websites of small businesses'
         }, 
         {
             'employer': 'The Weather Company',
@@ -95,8 +105,8 @@ var projects = {
             'dates': 'April 2016 - May 2016',
             'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.'
             ,
-            'images': 
-                [{'image': 'images/ninja.jpg'}]
+            'images': 'images/ninja.jpg'
+                
 
         },
         {
@@ -104,14 +114,14 @@ var projects = {
             'dates': 'April 2016',
             'description': 'A preschool game filled with animals and multiple-choice answers'
             ,
-            'images': [{'image': 'images/game.png'}]
+            'images': 'images/game.png'
         },
         {
             'title': 'jQuery Slider',
             'dates': 'February 2017',
             'description': 'Simple jQuery slider'
             ,
-            'images': [{'image': 'images/jquery_slider_img.png'}]
+            'images': 'images/jquery_slider_img.png'
         }
     ]
     // ,
@@ -121,18 +131,7 @@ var projects = {
 }
 
 
-var formattedName =  HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-$("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-$(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
 // $(".welcome-message").append(HTMLskillsStart);
 // skills.forEach(function(skill) {
 //     $("#skills-h3").append(HTMLskills.replace("%data%", skill));
@@ -185,34 +184,8 @@ function displayWork() {
 displayWork();
 
 
-$(document).click(function  (loc) {
-
-    var x = loc.pageX;
-    var y = loc.pageY;
-    logClicks(x, y);
-
-
-});
-
 $("#main").append(internationalizeButton);
 
-function inName(name) {
-    var firstArray = name.split(" ");
-    var first = firstArray[0];
-    var last = firstArray[1];
-
-    var x = first.charAt(0).toUpperCase();
-    var y = first.slice(1, (first.length));
-    first = x + y;
-
-
-    last = last.toUpperCase();
-    var fullName = first + " " + last;
-    
-        console.log(fullName);
-        return fullName;
-}
-inName("heather conley");
 
 projects.display = function() {
     for (proj in projects.projects) {
@@ -224,19 +197,33 @@ projects.display = function() {
         $(".project-entry:last").append(formattedProjDates);
         var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
         $(".project-entry:last").append(formattedProjDescription);
-        
-        if (projects.projects[proj].images.length > 0) {
-            for (image in projects.projects[proj].images) {
-                var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[image]);
-                console.log(formattedProjImage)''
-                $(".project-entry:last").append(formattedProjImage);
+        var projImages = projects.projects[proj].images;
+        if (projImages.length > 0) {
 
-            }
+            
+            // // console.log(projects.projects[proj].images);
+            // // var array = [];
+            // projImages.forEach(function (image) {
+            //     array.push(image);
+            //     console.log(array);
+            // })
+            // // return array;
+
+
+            // for (image in projects.projects[proj].images) {
+            //     var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[image]);
+            //     console.log(formattedProjImage);
+            //     $(".project-entry:last").append(formattedProjImage);
+
+            // }
         }
+
     }
 }
 projects.display();
 
+
+bio.display();
 
 
 
