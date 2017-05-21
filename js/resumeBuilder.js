@@ -3,8 +3,6 @@ This is empty on purpose! Your code to build the resume will go here.
  */
 
 
-var skills = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'];
-
 var bio = {
     'name': 'Heather Conley',
     'role': 'Junior Front End Developer',
@@ -33,17 +31,12 @@ var bio = {
         $(stuff).insertAfter('#topContacts');
         $(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
 
-        console.log(bio.skills);
         var skills = bio.skills;
         if (skills.length > 0) {
-            $("#header").append(HTMLskillsStart);
-            
+            $("#header").append(HTMLskillsStart);      
             skills.forEach(function(skill) {
-                console.log(skill);
                 var formattedSkill = HTMLskills.replace("%data%", skill);
                 $("#skills").append(formattedSkill);
-                console.log(formattedSkill);
-
             });
 
         }
@@ -56,7 +49,7 @@ var work = {
     'jobs' : [
         {
             'employer': 'GetUWired',
-            'title': 'CrossFit Developer',
+            'title': 'Junior Developer',
             'location': 'Gainesville, GA',
             'dates': 'January 2017 - present',
             'description': 'Contributed to building websites of small businesses'
@@ -76,23 +69,24 @@ var work = {
             'description': 'Managed a dance studio with enrollment of 200+ annually; Designed and implemented programs for children and adults; Organized and produced a spring performance for over 1200 children annually.'
         }, 
     ],
-    'display': function displayWork() {
+    'display': function displayWork() {      
+        $("#workExperience").append(HTMLworkStart);       
+
         var jobs = work.jobs;
-            for(job in jobs) {
-        $("#workExperience").append(HTMLworkStart);
 
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
-        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+        jobs.forEach(function (job) {
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+            var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
+            var formattedEmployerTitle = formattedEmployer + formattedTitle;
+            $(".work-entry").append(formattedEmployerTitle);
 
-        $(".work-entry:last").append(formattedEmployerTitle);
+            var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+            $(".work-entry").append(formattedDates);
 
-        var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
-        $(".work-entry:last").append(formattedDates);
+            var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
+            $(".work-entry").append(formattedDescription);
 
-        var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
-        $(".work-entry:last").append(formattedDescription);
-    }
+        })
     }
 }
 
@@ -104,7 +98,7 @@ var education = {
             'degree': 'Front End Engineering Certificate',
             'majors': ['HTML', 'CSS', 'JavaScript'],
             'dates': 'February 2016 - May 2016',
-            'url': 'http://www.butler.edu'
+            'url': 'http://theironyard.com'
         },
         {
             'name': 'Butler University',
@@ -112,19 +106,37 @@ var education = {
             'degree': 'BA in Dance',
             'majors': 'Dance, Pedagogy concentration',
             'dates': '2000',
-            'url': 'http://theironyard.com'
+            'url': 'http://www.butler.edu'
         }
     ],
     'onlineCourses' : [
         {
            'title': 'Front-End Web Developer Nanodegree',
            'school': 'Udacity',
-           'dates': 'December 2016-present',
+           'dates': 'December 2016-present (in progress)',
            'url': 'https://www.udacity.com'
        }
     ],
     'display': function displaySchools() {
-        console.log('hello');
+        var schools = education.schools;
+        var online = education.onlineCourses;
+
+        $('#education').append(HTMLschoolStart);
+
+        schools.forEach(function (school) {
+            var formattedSchool = HTMLschoolName.replace("#", school.url).replace("%data%", school.name);
+            var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
+            var formattedDatesSchool = HTMLschoolDates.replace("%data%", school.dates);
+            var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
+            var formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
+
+            $('.education-entry').append(formattedSchool);
+            $('.education-entry').append(formattedDegree);
+            $('.education-entry').append(formattedDatesSchool);
+            $('.education-entry').append(formattedLocation);
+            $('.education-entry').append(formattedMajor);
+
+        });
     }
 }
 
@@ -169,7 +181,7 @@ var projects = {
 // })
 
 // $("#workExperience").append(HTMLworkTitle.replace("%data%", work.jobs[0]['title']));
-$("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
+// $("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
 
 
 // $("#skills").append(skills.forEach(function(skill) {
@@ -211,11 +223,13 @@ projects.display = function() {
 
     }
 }
-projects.display();
+
 
 
 bio.display();
 work.display();
+projects.display();
+education.display();
 
 
 
