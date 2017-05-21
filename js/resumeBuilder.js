@@ -137,6 +137,18 @@ var education = {
             $('.education-entry').append(formattedMajor);
 
         });
+
+        $('.education-entry').append(HTMLonlineClasses);
+        online.forEach(function (course) {
+            var formattedOnlineTitle = HTMLonlineTitle.replace("#", course.url).replace("%data%", course.title);
+            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
+
+            $(".education-entry").append(formattedOnlineTitle);
+            $(".education-entry").append(formattedOnlineSchool);
+            $(".education-entry").append(formattedOnlineDates);
+
+        })
     }
 }
 
@@ -146,83 +158,49 @@ var projects = {
         {
             'title': 'Milk Ninja',
             'dates': 'April 2016 - May 2016',
-            'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.'
-            ,
+            'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.',
             'images': 'images/ninja.jpg'
-                
-
         },
         {
             'title': 'Animal Action',
             'dates': 'April 2016',
-            'description': 'A preschool game filled with animals and multiple-choice answers'
-            ,
+            'description': 'A preschool game filled with animals and multiple-choice answers',
             'images': 'images/game.png'
         },
         {
             'title': 'jQuery Slider',
             'dates': 'February 2017',
-            'description': 'Simple jQuery slider'
-            ,
+            'description': 'Simple jQuery slider',
             'images': 'images/jquery_slider_img.png'
         }
     ]
-    // ,
-    // 'display': function displayProjects() {
-    //     console.log("hello");
-    // }
-}
-
-
-
-// $(".welcome-message").append(HTMLskillsStart);
-// skills.forEach(function(skill) {
-//     $("#skills-h3").append(HTMLskills.replace("%data%", skill));
-// })
-
-// $("#workExperience").append(HTMLworkTitle.replace("%data%", work.jobs[0]['title']));
-// $("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
-
-
-// $("#skills").append(skills.forEach(function(skill) {
-//     $("#skills").append(HTMLskills.replace("%data%", skill));
-// }))
-
-
-$("#main").append(internationalizeButton);
-
-
-projects.display = function() {
-    for (proj in projects.projects) {
+    ,
+    'display': function displayProjects() {
+        console.log(projects);
         $("#projects").append(HTMLprojectStart);
         
-        var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
-        $(".project-entry:last").append(formattedProjTitle);
-        var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[proj].dates);
-        $(".project-entry:last").append(formattedProjDates);
-        var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
-        $(".project-entry:last").append(formattedProjDescription);
-        var projImages = projects.projects[proj].images;
-        if (projImages.length > 0) {
-            // // console.log(projects.projects[proj].images);
-            // // var array = [];
-            // projImages.forEach(function (image) {
-            //     array.push(image);
-            //     console.log(array);
-            // })
-            // // return array;
+        projects.projects.forEach(function (project) {
+            var formattedProjTitle = HTMLprojectTitle.replace("%data%", project.title);
+            $(".project-entry").append(formattedProjTitle);
+            var formattedProjDates = HTMLprojectDates.replace("%data%", project.dates);
+            $(".project-entry").append(formattedProjDates);
+            var formattedProjDescription = HTMLprojectDescription.replace("%data%", project.description);
+            $(".project-entry").append(formattedProjDescription);
 
 
-            // for (image in projects.projects[proj].images) {
-            //     var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[image]);
-            //     console.log(formattedProjImage);
-            //     $(".project-entry:last").append(formattedProjImage);
+            var image = project.images;
 
-            // }
-        }
-
+            if (image.length > 0) {
+                console.log(image);
+                var formattedProjImage = HTMLprojectImage.replace("%data%", image);
+                console.log(formattedProjImage);
+                $(".project-entry").append(formattedProjImage);
+            }
+        })
     }
 }
+
+
 
 
 
