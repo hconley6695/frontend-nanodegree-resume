@@ -29,8 +29,24 @@ var bio = {
         $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
         $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-        $("#topContacts").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        var stuff = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        $(stuff).insertAfter('#topContacts');
         $(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+
+        console.log(bio.skills);
+        var skills = bio.skills;
+        if (skills.length > 0) {
+            $("#header").append(HTMLskillsStart);
+            
+            skills.forEach(function(skill) {
+                console.log(skill);
+                var formattedSkill = HTMLskills.replace("%data%", skill);
+                $("#skills").append(formattedSkill);
+                console.log(formattedSkill);
+
+            });
+
+        }
     }
 }
 
@@ -61,7 +77,22 @@ var work = {
         }, 
     ],
     'display': function displayWork() {
-        console.log('display work');
+        var jobs = work.jobs;
+            for(job in jobs) {
+        $("#workExperience").append(HTMLworkStart);
+
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+        $(".work-entry:last").append(formattedEmployerTitle);
+
+        var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
+        $(".work-entry:last").append(formattedDates);
+
+        var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
+        $(".work-entry:last").append(formattedDescription);
+    }
     }
 }
 
@@ -141,47 +172,9 @@ var projects = {
 $("#education").append(HTMLschoolName.replace("%data%", education.schools[0].name));
 
 
-if (skills.length > 0) {
-    $("#header").append(HTMLskillsStart);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
-    $("#skills").append(formattedSkill);
-
-}
 // $("#skills").append(skills.forEach(function(skill) {
 //     $("#skills").append(HTMLskills.replace("%data%", skill));
 // }))
-
-var jobs = work.jobs;
-function displayWork() {
-    for(job in jobs) {
-        $("#workExperience").append(HTMLworkStart);
-
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%", jobs[job].title);
-        var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-        $(".work-entry:last").append(formattedEmployerTitle);
-
-        var formattedDates = HTMLworkDates.replace("%data%", jobs[job].dates);
-        $(".work-entry:last").append(formattedDates);
-
-        var formattedDescription = HTMLworkDescription.replace("%data%", jobs[job].description);
-        $(".work-entry:last").append(formattedDescription);
-    }
-}
-displayWork();
 
 
 $("#main").append(internationalizeButton);
@@ -199,8 +192,6 @@ projects.display = function() {
         $(".project-entry:last").append(formattedProjDescription);
         var projImages = projects.projects[proj].images;
         if (projImages.length > 0) {
-
-            
             // // console.log(projects.projects[proj].images);
             // // var array = [];
             // projImages.forEach(function (image) {
@@ -224,7 +215,7 @@ projects.display();
 
 
 bio.display();
-
+work.display();
 
 
 
