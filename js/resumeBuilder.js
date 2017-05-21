@@ -176,7 +176,6 @@ var projects = {
     ]
     ,
     'display': function displayProjects() {
-        console.log(projects);
         $("#projects").append(HTMLprojectStart);
         
         projects.projects.forEach(function (project) {
@@ -191,9 +190,7 @@ var projects = {
             var image = project.images;
 
             if (image.length > 0) {
-                console.log(image);
                 var formattedProjImage = HTMLprojectImage.replace("%data%", image);
-                console.log(formattedProjImage);
                 $(".project-entry").append(formattedProjImage);
             }
         })
@@ -208,6 +205,8 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
+$('#mapDiv').append(googleMap);
 
 
 
