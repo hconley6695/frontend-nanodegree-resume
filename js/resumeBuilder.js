@@ -15,7 +15,7 @@ var bio = {
         },
     'pictureURL': 'images/profile.jpg',
     'welcomeMessage': 'Hello, Welcome to my Page!',
-    'skills': ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'],
+    'skills': ['HTML', 'CSS', 'JavaScript', 'jQuery', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'],
     'display': function displayBio() {
         var formattedName =  HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -103,7 +103,7 @@ var education = {
         {
             'name': 'Butler University',
             'location': 'Indianapolis, IN',
-            'degree': 'BA in Dance',
+            'degree': 'BA',
             'majors': 'Dance, Pedagogy concentration',
             'dates': '2000',
             'url': 'http://www.butler.edu'
@@ -126,27 +126,30 @@ var education = {
         schools.forEach(function (school) {
             var formattedSchool = HTMLschoolName.replace("#", school.url).replace("%data%", school.name);
             var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
+            var schoolAndDegree = formattedSchool + formattedDegree;
+
             var formattedDatesSchool = HTMLschoolDates.replace("%data%", school.dates);
             var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
             var formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
 
-            $('.education-entry').append(formattedSchool);
-            $('.education-entry').append(formattedDegree);
+            $('.education-entry').append(schoolAndDegree);
             $('.education-entry').append(formattedDatesSchool);
             $('.education-entry').append(formattedLocation);
             $('.education-entry').append(formattedMajor);
 
         });
 
-        $('.education-entry').append(HTMLonlineClasses);
+        $('#education').append(HTMLonlineClasses);
+        
         online.forEach(function (course) {
+            $('#education').append(HTMLschoolStart);
             var formattedOnlineTitle = HTMLonlineTitle.replace("#", course.url).replace("%data%", course.title);
             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
+            var schoolAndTitle = formattedOnlineTitle + formattedOnlineSchool;
             var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
 
-            $(".education-entry").append(formattedOnlineTitle);
-            $(".education-entry").append(formattedOnlineSchool);
-            $(".education-entry").append(formattedOnlineDates);
+            $(".education-entry:last").append(schoolAndTitle);
+            $(".education-entry:last").append(formattedOnlineDates);
 
         })
     }
