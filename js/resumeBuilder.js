@@ -40,7 +40,7 @@ var bio = {
             });
 
         }
-    }
+    };
 }
 
 
@@ -86,8 +86,8 @@ var work = {
             var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
             $(".work-entry").append(formattedDescription);
 
-        })
-    }
+        });
+    };
 }
 
 var education = {
@@ -151,8 +151,8 @@ var education = {
             $(".education-entry:last").append(schoolAndTitle);
             $(".education-entry:last").append(formattedOnlineDates);
 
-        })
-    }
+        });
+    };
 }
 
 
@@ -176,8 +176,7 @@ var projects = {
             'description': 'Simple jQuery slider',
             'images': 'images/jquery_slider_img.png'
         }
-    ]
-    ,
+    ],
     'display': function displayProjects() {
         $("#projects").append(HTMLprojectStart);
         
@@ -196,8 +195,8 @@ var projects = {
                 var formattedProjImage = HTMLprojectImage.replace("%data%", image);
                 $(".project-entry").append(formattedProjImage);
             }
-        })
-    }
+        });
+    };
 }
 
 
