@@ -41,7 +41,7 @@ var bio = {
 
         }
     }
-}
+};
 
 
 
@@ -87,8 +87,8 @@ var work = {
             $(".work-entry").append(formattedDescription);
 
         });
-    };
-}
+    }
+};
 
 var education = {
     'schools' : [
@@ -152,8 +152,8 @@ var education = {
             $(".education-entry:last").append(formattedOnlineDates);
 
         });
-    };
-}
+    }
+};
 
 
 var projects = {
@@ -196,8 +196,8 @@ var projects = {
                 $(".project-entry").append(formattedProjImage);
             }
         });
-    };
-}
+    }
+};
 
 
 
