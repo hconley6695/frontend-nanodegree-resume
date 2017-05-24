@@ -182,11 +182,13 @@ span {
 
 #lets-connect {
   text-align: center;
+  background-color: #024f6f;
 }
 
 h2.center-text {
-  color: #000;
+  color: #fff;
 }
+
 
 /* Media queries to handle various device widths */
 

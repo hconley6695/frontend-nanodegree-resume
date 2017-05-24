@@ -13,7 +13,7 @@ var bio = {
         'twitter': '@hconley6695',
         'location': 'Alpharetta, GA'
         },
-    'pictureURL': 'images/profile.jpg',
+    'biopic': 'images/profile.jpg',
     'welcomeMessage': 'Hello, Welcome to my Page!',
     'skills': ['HTML', 'CSS', 'JavaScript', 'jQuery', 'PHP', 'Bootstrap', 'ReactJS', 'Wordpress'],
     'display': function displayBio() {
@@ -22,14 +22,14 @@ var bio = {
 
         $('#header').prepend(formattedRole);
         $('#header').prepend(formattedName);
-        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-        $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-        $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-        $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-        $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+        $("#topContacts, #footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#topContacts, #footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+        $("#topContacts, #footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#topContacts, #footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+        $("#topContacts, #footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
         var stuff = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
         $(stuff).insertAfter('#topContacts');
-        $(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+        $(".welcome-message").prepend(HTMLbioPic.replace("%data%", bio.biopic));
 
         var skills = bio.skills;
         if (skills.length > 0) {
@@ -86,6 +86,9 @@ var work = {
             var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
             $(".work-entry").append(formattedDescription);
 
+            var formattedLocation = HTMLworkLocation.replace("%data%", job.location);
+            $(".work-entry").append(formattedLocation);
+
         });
     }
 };
@@ -104,7 +107,7 @@ var education = {
             'name': 'Butler University',
             'location': 'Indianapolis, IN',
             'degree': 'BA',
-            'majors': 'Dance, Pedagogy concentration',
+            'majors': ['Dance, Pedagogy concentration'],
             'dates': '2000',
             'url': 'http://www.butler.edu'
         }
@@ -162,19 +165,19 @@ var projects = {
             'title': 'Milk Ninja',
             'dates': 'April 2016 - May 2016',
             'description': 'This web application for mobile devices helps moms find and share locations where they can comfortably feed their ninjas, er, um...babies.',
-            'images': 'images/ninja.jpg'
+            'images': ['images/ninja.jpg']
         },
         {
             'title': 'Animal Action',
             'dates': 'April 2016',
             'description': 'A preschool game filled with animals and multiple-choice answers',
-            'images': 'images/game.png'
+            'images': ['images/game.png']
         },
         {
             'title': 'jQuery Slider',
             'dates': 'February 2017',
             'description': 'Simple jQuery slider',
-            'images': 'images/jquery_slider_img.png'
+            'images': ['images/jquery_slider_img.png']
         }
     ],
     'display': function displayProjects() {
@@ -189,12 +192,13 @@ var projects = {
             $(".project-entry").append(formattedProjDescription);
 
 
-            var image = project.images;
-
-            if (image.length > 0) {
-                var formattedProjImage = HTMLprojectImage.replace("%data%", image);
-                $(".project-entry").append(formattedProjImage);
-            }
+            var images = project.images;
+            images.forEach(function(image) {
+                if (images.length > 0) {
+                    var formattedProjImage = HTMLprojectImage.replace("%data%", image);
+                    $(".project-entry").append(formattedProjImage);
+                }
+            });
         });
     }
 };
